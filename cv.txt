@@ -1,0 +1,16 @@
+Replace this file with your own CV content as plain text.
+
+The more relevant skills, technologies, and experience you paste in here,
+the better the match scores on the Matches page will be - the matcher
+just compares the words used here against each job description.
+
+Example (delete this and use your own):
+
+Third year Computer Science student at DCU. Experience with Python,
+Java, SQL, Streamlit, REST APIs, Git, and Linux. Built a job
+application tracker using Streamlit, sqlite3, and scikit-learn.
+Completed coursework in data structures, algorithms, databases,
+software engineering, and operating systems. Comfortable working in a
+team using Agile practices, writing unit tests with pytest, and using
+GitHub for version control. Interested in backend development, APIs,
+and data-driven applications. Available for a 2027 summer internship.
