@@ -100,9 +100,18 @@ def upsert_job_posting(job: dict):
     conn.close()
 
 
-def list_job_postings():
+def list_job_postings(search: str = ""):
     conn = get_connection()
-    rows = conn.execute("SELECT * FROM job_postings ORDER BY match_score DESC").fetchall()
+    if search.strip():
+        like = f"%{search.strip()}%"
+        rows = conn.execute(
+            """SELECT * FROM job_postings
+               WHERE position LIKE ? OR company LIKE ? OR tags LIKE ? OR description LIKE ?
+               ORDER BY match_score DESC""",
+            (like, like, like, like),
+        ).fetchall()
+    else:
+        rows = conn.execute("SELECT * FROM job_postings ORDER BY match_score DESC").fetchall()
     conn.close()
     return rows
 

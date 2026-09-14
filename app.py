@@ -90,12 +90,12 @@ else:
     if not cv_text:
         st.warning("No CV text found — add your skills/experience to cv.txt to enable match scoring.")
 
-    postings = db.list_job_postings()
+    postings = db.list_job_postings(search=search)
     if cv_text and postings:
         scores = score_jobs(cv_text, [p["description"] for p in postings])
         for posting, score in zip(postings, scores):
             db.update_match_score(posting["id"], round(score * 100, 1))
-        postings = db.list_job_postings()  # re-read, now sorted by the updated score
+        postings = db.list_job_postings(search=search)  # re-read, now sorted by the updated score
 
     if not postings:
         st.info("No postings yet — try fetching above.")
