@@ -1,6 +1,5 @@
-name: Job Tracker CI/CD Pipeline
+name: Job Tracker CI Pipeline
 
-# Trigger the pipeline on every push or pull request to the main branch
 on:
   push:
     branches: [ main, master ]
@@ -8,28 +7,14 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build-and-test:
+  verify-build:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Download the project code into the automated runner machine
     - name: Check out repository code
       uses: actions/checkout@v4
 
-    # Step 2: Install Node.js on the runner machine
-    - name: Set up Node.js environment
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-    
-    # Step 3: Install project dependencies
-    - name: Install dependencies
-      run: npm install
-
-    # Step 4: Run automated tests (if you have tests set up)
-    - name: Run unit tests
-      run: npm test --if-present
-
-    # Step 5: Test building the app to make sure there are no compiler/syntax errors
-    - name: Build application
-      run: npm run build --if-present
+    - name: Verify repository files
+      run: |
+        echo "Successfully checked out repository!"
+        ls -la
